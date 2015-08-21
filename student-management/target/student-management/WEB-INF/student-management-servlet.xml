@@ -9,7 +9,7 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-4.0.xsd
 	http://www.springframework.org/schema/security
-	http://www.springframework.org/schema/security/spring-security-4.0.2.xsd">
+	http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
 	<mvc:annotation-driven />
 	<context:component-scan base-package="com.hoanghiep.spring.controller" />
@@ -20,4 +20,23 @@
 		<property name="prefix" value="/" />
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+
+	<!-- security config -->
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/*"
+			access="hasRole('ROLE_ADMIN')" />
+		<security:form-login login-page="/login"
+			authentication-failure-url="/login?error=true" username-parameter="username"
+			password-parameter="password" />
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="admin" password="123456"
+					authorities="ROLE_ADMIN" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
 </beans>
