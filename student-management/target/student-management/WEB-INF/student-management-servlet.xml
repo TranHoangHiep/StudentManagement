@@ -26,8 +26,8 @@
 		<security:intercept-url pattern="/*"
 			access="hasRole('ROLE_ADMIN')" />
 		<security:form-login login-page="/login"
-			authentication-failure-url="/login?error=true" username-parameter="username"
-			password-parameter="password" />
+			authentication-failure-url="/login?error=true" username-parameter="j_username"
+			password-parameter="j_password" />
 	</security:http>
 
 	<security:authentication-manager>
