@@ -8,10 +8,13 @@
 <title>Login Administration</title>
 </head>
 <body>
-	<c:if test="${param.error != null}">
-		<p>Invalid username / password</p>
+	<c:url value="/j_spring_security_check" var="security_check_action" />
+	<c:if test="${error}">
+		<font color="red">Wrong username or password!</font>
+		<br />
+		<br />
 	</c:if>
-	<form action="${j_spring_security_check}" method="post">
+	<form action="${security_check_action}" method="post">
 		Username: <input type="text" name="username"><br>
 		Password: <input type="password" name="password"><br> <input
 			type="reset" value="Reset"> <input type="submit"
