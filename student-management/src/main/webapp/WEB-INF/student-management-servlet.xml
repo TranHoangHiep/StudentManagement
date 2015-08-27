@@ -17,7 +17,7 @@
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- <property name="order" value="1" /> -->
+		<property name="order" value="2" />
 		<property name="prefix" value="/" />
 		<property name="suffix" value=".jsp"></property>
 	</bean>
