@@ -7,18 +7,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/admin")
-public class AdminController {
+public class AdminController extends CommonController{
 
-	@RequestMapping(value="/login")
+	@RequestMapping(value="/admin/login")
 	public ModelAndView login (@RequestParam(required = false) boolean error){
-		ModelAndView mav = new ModelAndView("login");
+		ModelAndView mav = new ModelAndView("/admin/login");
 		if(error) mav.addObject("error", error);
 		return mav;
 	}
-	@RequestMapping(value="/index", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/index", method=RequestMethod.GET)
 	public ModelAndView index(){
-		ModelAndView mv = new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("/admin/index");
 		mv.addObject("message", "Administration");
 		return mv;
 	}

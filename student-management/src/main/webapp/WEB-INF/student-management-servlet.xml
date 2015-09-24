@@ -18,17 +18,16 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="order" value="2" />
-		<property name="prefix" value="/" />
+		<property name="prefix" value="/jsp/" />
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 
 	<!-- security bean -->
 	<security:http auto-config="true">
-		<security:intercept-url pattern="/admin/index"
-			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/" access="ROLE_ADMIN" />
 		<security:form-login login-page="/admin/login"
-			authentication-failure-url="/admin/login?error=true"
-			username-parameter="username" password-parameter="password" />
+			username-parameter="username" password-parameter="password"
+			default-target-url="/admin/index" />
 	</security:http>
 
 	<security:authentication-manager>
@@ -51,7 +50,37 @@
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
-				<value>/WEB-INF/tiles/definitions.xml</value>
+				<value>/tiles/definitions.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Database connection -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/student_management?UseUnicode=true;characterEncoding=UTF-8" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+
+	<!-- hibernate congif -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.connection.Charset">UTF-8</prop>
+				<prop key="hibernate.connection.charsetEncoding">UTF-8</prop>
+				<prop key="hibernate.connection.useUnicode">true</prop>
+			</props>
+		</property>
+		<property name="mappingLocations">
+			<list>
+				<value>class:</value>
 			</list>
 		</property>
 	</bean>
