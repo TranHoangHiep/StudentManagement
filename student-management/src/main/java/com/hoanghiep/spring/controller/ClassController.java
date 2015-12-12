@@ -14,4 +14,9 @@ public class ClassController extends CommonController {
 		ModelAndView mav = new ModelAndView("/class/index", "command", new Class());
 		return mav;
 	}
+	@RequestMapping(value="/class/addClass", method=RequestMethod.GET)
+	public ModelAndView addClass(){
+		ModelAndView mav = new ModelAndView("/class/addClass", "command", new Class());
+		return mav;
+	}
 }
