@@ -3,3 +3,4 @@ test_script.sh
 bin
 obj/*
 /target
+/.settings
