@@ -3,3 +3,6 @@ test_script.sh
 bin
 obj/*
 /target
+.classpath
+.project
+.settings/
