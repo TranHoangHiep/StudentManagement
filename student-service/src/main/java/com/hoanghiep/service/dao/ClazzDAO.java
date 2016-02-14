@@ -1,20 +1,12 @@
 package com.hoanghiep.service.dao;
 
-import javax.sql.DataSource;
+import java.util.List;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+import com.hoanghiep.service.model.Clazz;
 
-public class ClazzDAO {
+public interface ClazzDAO {
 
-	private DataSource dataSource;
-	private JdbcTemplate templateObject;
-
-	private String insertSQL;
-
-	public void setDataSource(DataSource dataSource){
-		this.dataSource = dataSource;
-		this.templateObject = new JdbcTemplate(dataSource);
-	}
+	public void add(Clazz clazz);
 	
-	public void insert()
+	public List<Clazz> list();
 }
