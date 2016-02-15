@@ -9,7 +9,7 @@ public class ClazzController {
 	@Autowired
 	private ClazzDAO classDao;
 	
-//	public String addClazz(Clazz clazz, ModelMap model){
-////		model.addAttribute("code", )
-//	}
+	public void addClazz(){
+		
+	}
 }

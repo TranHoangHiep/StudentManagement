@@ -20,6 +20,7 @@ public class ClazzDaoImpl implements ClazzDAO{
 	@Override
 	public void add(Clazz clazz) {
 		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
