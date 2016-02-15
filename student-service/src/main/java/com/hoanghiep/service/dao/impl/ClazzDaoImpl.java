@@ -13,6 +13,8 @@ import com.hoanghiep.service.model.Clazz;
 public class ClazzDaoImpl implements ClazzDAO{
 	
 	public static final String SQL_GET_LIST = "SELECT * FROM class";
+	
+	private static final String SQL_INSERT = "INSERT INTO class";
 
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
