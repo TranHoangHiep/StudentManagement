@@ -5,11 +5,13 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import com.hoanghiep.service.dao.ClazzDAO;
 import com.hoanghiep.service.mapper.ClazzMapper;
 import com.hoanghiep.service.model.Clazz;
 
+@Component
 public class ClazzDaoImpl implements ClazzDAO{
 	
 	public static final String SQL_GET_LIST = "SELECT * FROM class";
