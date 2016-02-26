@@ -13,23 +13,25 @@ import com.hoanghiep.service.model.Clazz;
 
 @Component
 public class ClazzDaoImpl implements ClazzDAO{
-	
+
 	public static final String SQL_GET_LIST = "SELECT * FROM class";
-	
-	private static final String SQL_INSERT = "INSERT INTO class(code, className, createDate) values(?, ?, ?)";
+
+	private static final String SQL_INSERT = "INSERT INTO class(id, code, className, createDate) values(?, ?, ?, ?)";
 
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
-	
+
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
-		this.jdbcTemplate = new JdbcTemplate();
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-	
+
 	@Override
 	public void add(Clazz clazz) {
 		// TODO Auto-generated method stub
-		jdbcTemplate.update(SQL_INSERT, clazz.getCode(), clazz.getClassName(), clazz.getCreateDate());
+		System.out.println("code: " + clazz.getCode() + ", className: " + clazz.getClassName() + ", date"
+				+ ": " + clazz.getCreateDate());
+		jdbcTemplate.update(SQL_INSERT, new Object[]{clazz.getId(), clazz.getCode(), clazz.getClassName(), clazz.getCreateDate()});
 	}
 
 	@Override

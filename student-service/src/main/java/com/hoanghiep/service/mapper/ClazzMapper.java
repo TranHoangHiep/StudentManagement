@@ -15,6 +15,7 @@ public class ClazzMapper implements RowMapper<Clazz>{
 		clazz.setId(rs.getInt("id"));
 		clazz.setCode(rs.getString("code"));
 		clazz.setClassName(rs.getString("className"));
+		clazz.setCreateDate(rs.getString("createDate"));
 		return clazz;
 	}
 
