@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -19,8 +20,10 @@ public class ClazzDaoImpl implements ClazzDAO{
 	private static final String SQL_INSERT = "INSERT INTO class(id, code, className, createDate) values(?, ?, ?, ?)";
 
 	private DataSource dataSource;
+	
 	private JdbcTemplate jdbcTemplate;
 
+	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -28,7 +31,6 @@ public class ClazzDaoImpl implements ClazzDAO{
 
 	@Override
 	public void add(Clazz clazz) {
-		// TODO Auto-generated method stub
 		System.out.println("code: " + clazz.getCode() + ", className: " + clazz.getClassName() + ", date"
 				+ ": " + clazz.getCreateDate());
 		jdbcTemplate.update(SQL_INSERT, new Object[]{clazz.getId(), clazz.getCode(), clazz.getClassName(), clazz.getCreateDate()});
@@ -36,7 +38,6 @@ public class ClazzDaoImpl implements ClazzDAO{
 
 	@Override
 	public List<Clazz> list() {
-		// TODO Auto-generated method stub
 		List<Clazz> students = jdbcTemplate.query(SQL_GET_LIST, new ClazzMapper());
 		return students;
 	}
