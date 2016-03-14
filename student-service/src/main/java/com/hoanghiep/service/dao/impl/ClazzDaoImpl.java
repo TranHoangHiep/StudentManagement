@@ -31,7 +31,7 @@ public class ClazzDaoImpl implements ClazzDAO{
 
 	@Override
 	public void add(Clazz clazz) {
-		System.out.println("code: " + clazz.getCode() + ", className: " + clazz.getClassName() + ", date"
+		System.out.println("add class, code: " + clazz.getCode() + ", className: " + clazz.getClassName() + ", date"
 				+ ": " + clazz.getCreateDate());
 		jdbcTemplate.update(SQL_INSERT, new Object[]{clazz.getId(), clazz.getCode(), clazz.getClassName(), clazz.getCreateDate()});
 	}

@@ -21,13 +21,11 @@ public class ClazzController {
 	
 	@RequestMapping(value="/class/addClass", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public void addClazz(){
-		System.out.println("chay vao day");
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Calendar calendar= Calendar.getInstance();
 		Clazz clazz = new Clazz();
-		clazz.setId(1);
-		clazz.setCode("KTLT");
-		clazz.setClassName("Ky thuat lap tring");
+		clazz.setCode("CN_LTJV");
+		clazz.setClassName("Lập trình java");
 		clazz.setCreateDate(dateFormat.format(calendar.getTime()));
 		clazzDAO.add(clazz);
 	}
